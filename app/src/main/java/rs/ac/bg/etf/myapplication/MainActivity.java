@@ -23,6 +23,14 @@ public class MainActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        binding.button.setOnClickListener(v -> {
+            double duration = Double.parseDouble(binding.editText.getText().toString());
+            double met = 9.8;
+            double weight = 80;
+            int caloriesBurned = (int)(duration * met * 3.5 * weight / 200);
+            binding.textView.setText(caloriesBurned + "kcal");
+
+        });
 
     }
 }
