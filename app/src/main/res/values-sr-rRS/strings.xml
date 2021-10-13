@@ -12,4 +12,7 @@
     <string name="height_unit">cm</string>
     <string name="age_unit">godina</string>
     <string name="duration_unit">min</string>
+    <string name="burned">Burned :</string>
+    <string name="needed">Needed</string>
+    <string name="error_message">Wrong values</string>
 </resources>
