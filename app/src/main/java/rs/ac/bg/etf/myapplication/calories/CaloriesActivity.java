@@ -1,4 +1,4 @@
-package rs.ac.bg.etf.myapplication;
+package rs.ac.bg.etf.myapplication.calories;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,38 +7,38 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.res.TypedArray;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
-import rs.ac.bg.etf.myapplication.databinding.ActivityMainBinding;
+import rs.ac.bg.etf.myapplication.R;
+import rs.ac.bg.etf.myapplication.databinding.ActivityCaloriesBinding;
 
-public class MainActivity extends AppCompatActivity {
+public class CaloriesActivity extends AppCompatActivity {
 
-    private MyViewModel myViewModel;
-    private ActivityMainBinding binding;
+    private CaloriesViewModel caloriesViewModel;
+    private ActivityCaloriesBinding binding;
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(
-                MyViewModel.CALORIES_BURNED_KEY , myViewModel.getCaloriesBurned().getValue());
+                CaloriesViewModel.CALORIES_BURNED_KEY , caloriesViewModel.getCaloriesBurned().getValue());
         outState.putInt(
-                MyViewModel.CALORIES_NEEDED_KEY, myViewModel.getCaloriesNeeded().getValue());
+                CaloriesViewModel.CALORIES_NEEDED_KEY, caloriesViewModel.getCaloriesNeeded().getValue());
 
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityCaloriesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-    myViewModel =  new ViewModelProvider(this).get(MyViewModel.class);
+    caloriesViewModel =  new ViewModelProvider(this).get(CaloriesViewModel.class);
 
-    myViewModel.initByInstanceStateBundle(savedInstanceState);
+    caloriesViewModel.initByInstanceStateBundle(savedInstanceState);
 
-    myViewModel.getCaloriesBurned().observe(this, new Observer<Integer>() {
+    caloriesViewModel.getCaloriesBurned().observe(this, new Observer<Integer>() {
         @Override
         public void onChanged(Integer burned) {
             if(burned != -1){
@@ -48,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
-    myViewModel.getCaloriesNeeded().observe(this, new Observer<Integer>() {
+    caloriesViewModel.getCaloriesNeeded().observe(this, new Observer<Integer>() {
         @Override
         public void onChanged(Integer needed) {
             if(needed != -1){
                 String prefix = getResources().getString(R.string.needed);
-                binding.bmr.setText(prefix + ":"+needed + "kcal");
+                binding.needed.setText(prefix + ":"+needed + "kcal");
             }
         }
     });
@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         TypedArray metValues = getResources().obtainTypedArray(R.array.met_values);
         double met = metValues.getFloat(binding.spinner.getSelectedItemPosition() , 0);
-        myViewModel.updateValues(weight,height,age,isMale,duration,met);
+        caloriesViewModel.updateValues(weight,height,age,isMale,duration,met);
     });
 
 
