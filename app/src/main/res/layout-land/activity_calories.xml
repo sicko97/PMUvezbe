@@ -9,7 +9,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/weight"
-        android:hint="@string/Weight"
+        android:hint="@string/calories_height"
         style="@style/MaterialEditText.MaterialEditTextConstraintable"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/height"
@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="@dimen/DefaultHorizontalMargin"
         android:layout_marginRight="@dimen/DefaultHorizontalMargin"
-        app:suffixText="@string/weight_unit">
+        app:suffixText="@string/calories_weight_unit">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/weight_edit_text"
@@ -37,14 +37,14 @@
         app:layout_constraintGuide_percent="0.65"/>
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/height"
-        android:hint="@string/Height"
+        android:hint="@string/calories_weight"
         app:layout_constraintBaseline_toBaselineOf="@+id/weight"
         app:layout_constraintLeft_toRightOf="@id/weight"
         app:layout_constraintRight_toRightOf="@id/guideline_land"
         style="@style/MaterialEditText.MaterialEditTextConstraintable"
         android:layout_marginLeft="@dimen/DefaultHorizontalMargin"
         android:layout_marginRight="@dimen/DefaultHorizontalMargin"
-        app:suffixText="@string/height_unit">
+        app:suffixText="@string/calories_height_unit">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/height_edit_text"
@@ -58,13 +58,13 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/age"
-        android:hint="@string/Age"
+        android:hint="@string/calories_age"
         app:layout_constraintLeft_toLeftOf="@+id/weight"
         app:layout_constraintBottom_toTopOf="@+id/duration"
         app:layout_constraintTop_toBottomOf="@+id/weight"
         app:layout_constraintRight_toRightOf="@+id/weight"
         style="@style/MaterialEditText.MaterialEditTextConstraintable"
-        app:suffixText="@string/Age">
+        app:suffixText="@string/calories_age">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -90,27 +90,27 @@
                 android:id="@+id/male"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/male"
+                android:text="@string/calories_male"
               />
 
             <RadioButton
                 android:id="@+id/female"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/female"
+                android:text="@string/calories_female"
                />
 
     </RadioGroup>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/duration"
-        android:hint="@string/duration"
+        android:hint="@string/calories_duration"
         app:layout_constraintLeft_toLeftOf="@+id/age"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/age"
         app:layout_constraintRight_toRightOf="@+id/age"
         style="@style/MaterialEditText.MaterialEditTextConstraintable"
-        app:suffixText="@string/duration_unit">
+        app:suffixText="@string/calories_duration_unit">
 
 
         <com.google.android.material.textfield.TextInputEditText
@@ -139,7 +139,7 @@
         app:layout_constraintLeft_toLeftOf="@id/guideline_land"
         app:layout_constraintRight_toRightOf="parent"
 
-        android:text="@string/calculate"/>
+        android:text="@string/calories_button_label_calculate"/>
 
     <TextView
         android:id="@+id/burned"
@@ -149,7 +149,7 @@
         app:layout_constraintLeft_toLeftOf="@id/guideline_land"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculate"
-        android:textSize="@dimen/ResultTextSize"/>
+        android:textSize="@dimen/calories_result_text_size"/>
 
     <TextView
         android:id="@+id/needed"
@@ -159,6 +159,6 @@
         app:layout_constraintLeft_toLeftOf="@id/burned"
         app:layout_constraintRight_toRightOf="@id/burned"
         app:layout_constraintTop_toBottomOf="@id/burned"
-        android:textSize="@dimen/ResultTextSize"/>
+        android:textSize="@dimen/calories_result_text_size"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
