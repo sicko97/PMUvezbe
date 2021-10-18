@@ -2,7 +2,6 @@ package rs.ac.bg.etf.myapplication.routes;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +68,15 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.setData(locationUri);
 
+                routeBrowseActivity.startActivity(intent);
+            });
+
+            binding.routeButtonDescription.setOnClickListener(view -> {
+                int routeIndex = getAdapterPosition();
+
+                Intent intent = new Intent();
+                intent.setClass(routeBrowseActivity, RouteDetailsActivity.class);
+                intent.putExtra(RouteDetailsActivity.SELECTED_ROUTE_INDEX , routeIndex);
                 routeBrowseActivity.startActivity(intent);
             });
         }
