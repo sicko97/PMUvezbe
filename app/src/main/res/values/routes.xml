@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <string-array name="route_locations">
+
+        <item>Košutnjak, Srbija</item>
+
+        <item>Avala, Srbija</item>
+
+        <item>Bukulja, Srbija</item>
+
+        <item>Zasavica, Srbija</item>
+
+        <item>Slankamen, Srbija</item>
+
+        <item>Strazilovo, Srbija</item>
+
+        <item>Gradac, Srbija</item>
+
+        <item>Trem, Srbija</item>
+
+        <item>Midžor, Srbija</item>
+
+    </string-array>
+
+    <array name="route_images">
+
+        <item>@drawable/route_1_kosutnjak</item>
+
+        <item>@drawable/route_2_avala</item>
+
+        <item>@drawable/route_3_bukulja</item>
+
+        <item>@drawable/route_4_zasavica</item>
+
+        <item>@drawable/route_5_slankamen</item>
+
+        <item>@drawable/route_6_strazilovo</item>
+
+        <item>@drawable/route_7_gradac</item>
+
+        <item>@drawable/route_8_trem</item>
+
+        <item>@drawable/route_9_midzor</item>
+
+    </array>
+
+    <array name="route_lengths">
+
+        <item>5</item>
+
+        <item>6.5</item>
+
+        <item>8</item>
+
+        <item>6</item>
+
+        <item>8</item>
+
+        <item>11</item>
+
+        <item>9</item>
+
+        <item>14.5</item>
+
+        <item>23</item>
+
+    </array>
+
+    <integer-array name="route_difficulties">
+
+        <item>0</item>
+
+        <item>0</item>
+
+        <item>1</item>
+
+        <item>0</item>
+
+        <item>0</item>
+
+        <item>1</item>
+
+        <item>0</item>
+
+        <item>2</item>
+
+        <item>2</item>
+
+    </integer-array>
+
+    <string name="route_label">Route</string>
+
+    <string name="route_length_label">Length:</string>
+
+    <string name="route_difficulty_label">Difficulty:</string>
+
+    <string-array name="route_difficulties_phrases">
+
+        <item>easy</item>
+
+        <item>medium</item>
+
+        <item>hard</item>
+
+    </string-array>
+
+    <!-- Google translated -->
+
+    <string-array name="route_names">
+
+        <item>A walk through the Belgrade forest Kosutnjak</item>
+
+        <item>Hiking on Avala</item>
+
+        <item>Hiking on the mountain Bukulja</item>
+
+        <item>A walk through the swamps of Zasavica</item>
+
+        <item>Walking from Stari Slankamen to Šapat winery and Novi Slankamen</item>
+
+        <item>From Stražilovo via Branko\'s grave, Grgeteg monastery and the village of Neradin</item>
+
+        <item>A walk through the Gradac canyon, from the monastery of Ćelije to Valjevo</item>
+
+        <item>A walk from Bojana\'s waters to the Trem peak</item>
+
+        <item>On foot to Midzor on Stara Planina</item>
+
+    </string-array>
+
+    <string-array name="route_descriptions">
+
+        <item>The trail leads along the wide ridge of Košutnjak, initially through the forest, andthen over a large clearing, then descends past the ski lift to the tram.\n\nFrom the Skojevska bus station (from the direction of the city center), cross tothe opposite side of the street and take a few steps along the sidewalk. You willnotice a path among the trees that is gradually moving away from the road. Afterabout a hundred meters from the bus station, the trail enters the forest and passesby the field where pensioners are bowling. From there, the trail is marked and afterabout 150 meters it leads to the Rubin restaurant. At the end of the parking spaceof the Rubin restaurant, there is a concrete path right next to the building andyou take it back to the forest. Cross the asphalt road and continue on the wideforest road. Cross the second asphalt road and continue along the parallel forestpath that leads to the left in a large arch, and then to the right, and after about500m you will reach the Pioneer City with a children\'s camp.\n\nExit the Pioneer City through the gate next to the playground where the trees andbenches are painted blue and orange. Cross the asphalt road and continue alongthe path to the sign with the large number 9, which leads to the restaurant Devetka,which is also located in the forest. Pass by the nine wooden mushrooms behindthe Devetka restaurant on the forest road and continue until you come out intothe clearing. Turn left at two red sports fields. After the second red sports field,turn left across the clearing onto a well-trodden footpath to a group of oaks anda source of drinking water. </item>
+
+        <item>Crossing Mount Avala from southeast to northwest through the forest.\n\nFrom the bus station \"Put za Zuce\", look up, the red and white antenna risesexactly on the path that will conquer Avala. Cross the main road to the informationdesk and restaurant Lovac and follow the asphalt road on the left side of therestaurant which leads to the forest. Continue left at the crossroads. The trail ismarked in yellow, red and white, as well as blue and white, and passes by numerousbarracks all the way to the end of the asphalt road. At that place there is asignpost to the top of Avala (50 min).\n\nContinue up the forest road and do not pay attention to individual turns to theleft or right. About 400 meters after the last barracks where there is a smallconcrete wall, the footpath separates to the left while the road through the forestcontinues to the right. Follow the narrow path marked with red and white markersuntil you reach the elbow curve of the asphalt road that leads to the top of Avalanext to the yellow-black barrier. The marked path turns left and continues slightlyabove the asphalt road to finally turn right and lead uphill along the steep side,you reach the red-and-white antenna you saw from the bus station. Next to the antenna,go down to the asphalt road bordered by large blocks.\n\nAfter about twenty meters, turn left on the asphalt road, and then climb thestairs to the Monument to the Unknown Hero and Victims of the First World War,which was erected as part of the suffering of an unimaginable number of victims equalto a third of the Serbian population, then 4.5 million. From the highest peak of Avala,where the Monument to the Unknown Hero rises, the work of sculptor Ivan Meštrović, made by the order of King Alexander in the 1930s, offers an incredible view of thehilly Šumadija and Kosmaj mountain to the south and Belgrade and the plain of Vojvodinato the north. At that place, there used to be a Roman, then a medieval Serbian, andlater an Ottoman fortress (Žrnovo), a previous monument dedicated to the memory of thevictims of the First World War. </item>
+
+        <item>From the park in the center of Arandjelovac, the road climbs between the villas tothe museum. Above the last houses, the winding Dušan Mitrović pedestrian path beginsthrough the beech forest to the tower that serves as a lookout, and then to the top ofBukulja, where the antenna is located. There is a possibility to descend the westernside of the forest to Garaško Lake.\n\nCross the road in front of the Izvor Hotel, enter the park and walk a few metersto the right end of the flower alley from where the marked hiking trail on Bukuljabegins. There is a white marble cross at that place. Climb the paved footpath underthe tall old trees until you come across a few steps to get out of the park. Cross themain road and turn left onto the hiking trail that leads uphill. There is an arrowon the concrete pillar. Climb the winding road between the houses until you reach theNational Museum. A few steps to the left of the museum is a church that you can visit;and just below, through a beautiful park, is the fairytale (though closed)Villa Karadzic. Continue uphill to the right of the museum in the direction of thehospital signpost. When you enter the forest and find yourself above the church ofBukulja, turn right along the forest road that leads uphill. There is an arrow onthe concrete pillar on the opposite side. After about 50m of this forest road underseveral houses, the lined hiking trail turns right and downhill, onto a smaller trail.There is an arrow on the concrete wall above the footpath that shows where it turns. </item>
+
+        <item>The route follows the river Zasavica over wide grassy areas and through the forest.\n\nExit the circle of the Zasavica visitor center through the gate to the informationboard not far from the observation tower. At that place, there is a starting pillarfrom the row that marks the path. Follow the trail across wide lawns. After some 2.5kmwalk next to the information poster, cross the ladder over the fence and enter theforest. Continue along the forest path that stretches between the fields and afterabout 1.5 km you will reach the river Zasavica. The road follows the river all the wayto the Roma settlement, next to which you reach the asphalt road in the village ofZasavica. Continue a few steps along this asphalt road to the path that leads left tothe bridge over Zasavica. Next to the bridge there is a beautiful picnic area. </item>
+
+        <item>Blessed with a beautiful view of the Danube and Tisza rivers and two Vojvodina areas - Srem and Banat, the route leads uphill from Stari Slankamen to downhills that descendpast the Roman fortress and countless cottages to spacious vineyards and orchards, andreturns by a narrow path to Novi Slankamen.\n\nFrom the last bus stop in Stari Slankamen, turn left onto the main road and followthe green signpost 1 for the Acumincum Fortress (1000m). At the crossroads in front ofthe Catholic church, turn left uphill and follow the Gudur road, which climbs slowlyaround the hill on the left side of the Roman fortress. Behind the last houses ofStari Slankamen, the asphalt turns into a field road, and you pass by the cemeterythat remains on your left. On your right there is a great view over the small islandsand the Danube to the plantations along the river Tisza and across the open plains ofBanat. At the place where the field road enters the interior, signpost 8 means thefortress Acumincum (350m). About 50m further, at the crossroads next to a small whiteground floor holiday home, turn left following a handwritten signpost for the fortress(100m). Climb the washed-out field road until you come across a one-storey holidayhome with a terrace overlooking the Old Slankamen. Signpost 9 marks the monument toBici near Slankamen (2500m). Before continuing in the direction of signpost 9, turnleft and follow the narrow footpath just in front of the holiday home that leads tothe top of the Roman fortress and the ruins of the tower, also with a beautiful view. </item>
+
+        <item>From Stražilovo on the northern slope, a winding path leads uphill to Branko\'smonument, from where it climbs the asphalt road along the east-western slope. After ashort descent along the asphalt road, another good forest road descends to the south tothe Grgeteg monastery. On a low-traffic asphalt road with a counter climb, the routeleads to the village of Neradin and the restaurant Salash Perkov located on theoutskirts of the village.\n\nBehind the restaurant Branko\'s hut in Stražilovo, a good path along a winding slopeleads uphill for about twenty minutes to Branko\'s grave (a famous Serbian poet from theRomantic era) on a plateau with a view of Novi Sad. Behind the monument, the forest roadcontinues. Do not pay attention to the turn to the right towards the mountain lodgeStražilovo. A good forest road slowly climbs to the pass at the third kilometer, crossesthe barrier and erupts on the main asphalt road - Partizanski put. When you reach theasphalt road, turn left and descend the marked footpath of about 1.5 km. Cross theasphalt road and continue on the marked forest road on the other side (the signs have anicon!). The road bends to the right and some 100m goes parallel to the asphalt roadlower than it before it turns left down. Go over the cottages and after some 500m youwill come across a covered picnic table with a great view. Go down the pass while theGrgeteg monastery remains on your right. Cross the stream next to the monastery gatewith a golden mosaic.\n\nContinue to descend past several houses and farms holding the right side of thesettlement until you come across a signpost for Neradin. Follow the low-frequencyasphalt road with a steep ascent to the right, and then descend to the village ofNeradin, about 4 km away from the Grgeteg monastery, with a wide pass. Descend throughNeradin, to its lowest part, from where you start climbing again to the next pass. Thereis a signpost for Salash Perkov. When you find yourself on a plateau, turn left and headtowards the old building of Salas Perkov through its beautiful orchard. </item>
+
+        <item>After descending the steps to the monastery of Celija and the macadam to the Ecocenter,the route crosses the river Gradac for the first time. There are a lot of crossings onone side and then on the other side of the river bank. There are fantastic places forswimming and grilling before you reach the top of the macadam road, from where thewalker, after passing through several nicely located cafes, returns to Valjevo.\n\nFrom the information board on the river Gradac, not far from the bus station, godown the new steps that lead to the monastery, not by asphalt road. Next to the stairsthere are many picnic benches. To the right of the parking lot of the monastery, andnext to a large brown sign expressing the welcome to the monastery, a macadam roadroughly descends. After some 300m walk to the right and upstream, you reach the riverGradac. Cross the river over a solid pedestrian bridge made from a trunk to the old milland the Ecocenter. The Ecocenter is a picturesque place to relax with sun loungers bythe river and a cafe. Instead of continuing down the river Gradac where there is nopath, cross the meadow in front of the Ecocenter to get to the river again through anarrow part of the forest. </item>
+
+        <item>After the initial macadam path, the footpath climbs through the forest through theDevojački grob crossing (1311m). From there, the route follows the slope, and from thefinish there is a beautiful view in all directions.\n\nFrom the mountain lodge Studenac on Bojana\'s waters, follow the macadam road in thedirection of the blue signpost for Trem, first crossing the ski trail, and thencontinuing through the beech forest. After about two kilometers on this macadam road,the hiking route goes uphill along a narrow path through the forest. There is a redsignpost, nailed to a tree at the turn, on which is written Trem (3h). Follow thatnarrow ascending path, first through a beech forest, and then across a large clearingaround 1.5am, until you reach a slope at a place called the Maiden\'s Tomb, where theTrem is on your left and Sokolov on your right. From the pass, turn left and followthe beautiful path, which climbs the divine grass passes for another 1.5 hours, inorder to reach the top of Trem. The path follows the edge of the Trem massif with highcliffs and a spectacular view to your left. The porch can be recognized from manylocations in Serbia, mostly emerging from the fog. </item>
+
+        <item>From the hotel Stara planina you can reach a small pass between Babin Zub and Midžor bya narrow path below the Babin Zub rock. From the pass, a steep field road leads along awide slope. Behind the first small peak, the field road turns right, and finally, aftera long but gentle ascent on bare slopes, it reaches the top on the border with Bulgaria.\n\nTo get from the hotel Stara planina to the restaurant Plaža by bike, follow thenarrow asphalt road that turns into a macadam road and passes by the mountain lodgeBabin Zub. This narrow road turns steeply uphill about 1.5 km from the hotel along themain asphalt road in the direction of Knjaževac, and reaches the restaurant after about5 km. If you are walking, follow route 27, but due to the long ascent to Midzor, youmight be able to cross the first part of the ascent by cable car.\n\nFrom the Plaža restaurant, descend a few meters on a rough macadam road to thelowest point of the pass. From the pass, the macadam road leads to the right downhill,following the signpost for Topli Do, which you ignore. Continue straight uphill, in thedirection of the arrow for Midzor on the big rock. From there, overcome the wide ridgealong the macadam road, which initially climbs steeply. You may need to push the bike onsome difficult sections. Pass by the first small peak on your right. From there, thefield road becomes less steep and begins to turn right. Then go under the three smallpeaks on your left. A red signpost indicates a clear direction for Midzor. The finalpart of the route rises steeper again and reaches the ruins with another red signpostand that is where the field road ends. Turn sharply to the left and follow the narrowpath uphill, and again 100m away we can turn sharply to the right, to reach the top. Atthe highest point of Serbia, there is a white concrete pillar. </item>
+
+    </string-array>
+
+</resources>
