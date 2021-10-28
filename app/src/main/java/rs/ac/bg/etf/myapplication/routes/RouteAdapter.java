@@ -3,15 +3,12 @@ package rs.ac.bg.etf.myapplication.routes;
 import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.util.List;
-
 import rs.ac.bg.etf.myapplication.databinding.ViewHolderRouteBinding;
+
 
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHolder> {
 
@@ -58,8 +55,8 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
             this.binding = binding;
 
             binding.routeButtonLocation.setOnClickListener(view -> {
-                int routeIndex = getAdapterPosition();
 
+                int routeIndex = getAdapterPosition();
                 String locationString = routes.get(routeIndex).getLocation();
                 locationString = locationString.replace(" ", "%20");
                 locationString = locationString.replace("," , "%2C");

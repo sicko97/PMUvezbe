@@ -21,22 +21,6 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.buttonCalories.setOnClickListener(view -> {
-            Intent intent = new Intent();
-//            intent.setComponent(new ComponentName(
-//                    "rs.ac.bg.etf.myapplication",
-//                    "rs.ac.bg.etf.myapplication.calories.CaloriesActivity"
-//            ));
 
-           /* intent.setComponent(new ComponentName(this, CaloriesActivity.class));*/
-            intent.setClass(this, CaloriesActivity.class);
-            this.startActivity(intent);
-        });
-
-        binding.buttonRoutes.setOnClickListener(view -> {
-                 Intent intent = new Intent();
-                 intent.setClass(this, RouteBrowseActivity.class);
-                 this.startActivity(intent);
-        });
     }
 }

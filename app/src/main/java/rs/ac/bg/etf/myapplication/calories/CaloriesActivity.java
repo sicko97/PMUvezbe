@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.ActivityCaloriesBinding;
+import rs.ac.bg.etf.myapplication.routes.Route;
 
 public class CaloriesActivity extends AppCompatActivity {
 
