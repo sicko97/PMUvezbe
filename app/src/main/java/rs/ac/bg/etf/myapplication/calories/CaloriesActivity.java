@@ -1,18 +1,17 @@
 package rs.ac.bg.etf.myapplication.calories;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
-
 import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.ActivityCaloriesBinding;
-import rs.ac.bg.etf.myapplication.routes.Route;
 
 public class CaloriesActivity extends AppCompatActivity {
 
