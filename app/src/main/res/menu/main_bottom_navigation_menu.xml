@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/main_navigation_label_routes"
+    <item
+        android:id="@+id/menu_item_routes"
+        android:title="@string/main_navigation_label_routes"
         android:icon="@drawable/outline_terrain_24"/>
 
-    <item android:title="@string/main_navigation_label_calories"
+    <item
+        android:id="@+id/menu_item_calories"
+        android:title="@string/main_navigation_label_calories"
         android:icon="@drawable/outline_directions_run_24"/>
 
 </menu>
