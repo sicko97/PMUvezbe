@@ -26,7 +26,6 @@ public class CaloriesActivity extends AppCompatActivity {
                 CaloriesViewModel.CALORIES_BURNED_KEY, caloriesViewModel.getCaloriesBurned().getValue());
         outState.putInt(
                 CaloriesViewModel.CALORIES_NEEDED_KEY, caloriesViewModel.getCaloriesNeeded().getValue());
-
     }
 
     @Override
