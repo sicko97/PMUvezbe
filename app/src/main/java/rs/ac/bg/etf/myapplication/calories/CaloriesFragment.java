@@ -43,7 +43,7 @@ public class CaloriesFragment extends Fragment {
 
 
 
-        caloriesViewModel.getCaloriesBurned().observe(this, new Observer<Integer>() {
+        caloriesViewModel.getCaloriesBurned().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer burned) {
                 if (burned != -1) {
@@ -53,7 +53,7 @@ public class CaloriesFragment extends Fragment {
             }
         });
 
-        caloriesViewModel.getCaloriesNeeded().observe(this, new Observer<Integer>() {
+        caloriesViewModel.getCaloriesNeeded().observe(getViewLifecycleOwner(), new Observer<Integer>() {
             @Override
             public void onChanged(Integer needed) {
                 if (needed != -1) {
