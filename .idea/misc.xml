@@ -5,9 +5,12 @@
       <map>
         <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/drawable/outline_directions_run_24.xml" value="0.3769230769230769" />
         <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout-land/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout-land/fragment_calories.xml" value="0.43125" />
+        <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_calories.xml" value="0.8533916849015317" />
         <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_route_browse.xml" value="0.3512245961438249" />
         <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/activity_route_details.xml" value="0.3790546802594995" />
+        <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/fragment_calories.xml" value="0.3614457831325301" />
         <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/layout/view_holder_route.xml" value="0.35104166666666664" />
         <entry key="..\:/Users/Luka/AndroidStudioProjects/MyApplication2/app/src/main/res/menu/main_bottom_navigation_menu.xml" value="0.7708737864077669" />
       </map>
