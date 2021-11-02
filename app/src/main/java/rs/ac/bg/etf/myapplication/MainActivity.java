@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import rs.ac.bg.etf.myapplication.calories.CaloriesFragment;
 import rs.ac.bg.etf.myapplication.databinding.ActivityMainBinding;
@@ -11,7 +13,9 @@ import rs.ac.bg.etf.myapplication.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+    private FragmentManager fragmentManager;
     public static final String LOG_TAG = "fragment-example";
+    private static final String CALORIES_TAG = "fragment-calories-tag";
     private CaloriesFragment caloriesFragment;
 
     @Override
@@ -21,7 +25,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         caloriesFragment = new CaloriesFragment();
-
+        fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.frame_layout, caloriesFragment, CALORIES_TAG);
+        fragmentTransaction.commit();
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
