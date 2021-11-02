@@ -24,11 +24,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        caloriesFragment = new CaloriesFragment();
         fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.frame_layout, caloriesFragment, CALORIES_TAG);
-        fragmentTransaction.commit();
+        if(fragmentManager.getFragments().size() == 0 ) {
+            caloriesFragment = new CaloriesFragment();
+            fragmentManager
+                    .beginTransaction()
+                    .add(R.id.frame_layout, caloriesFragment, CALORIES_TAG)
+                    .commit();
+        }else{
+            caloriesFragment = (CaloriesFragment) fragmentManager.findFragmentByTag(CALORIES_TAG);
+        }
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
