@@ -11,7 +11,7 @@ import rs.ac.bg.etf.myapplication.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
-
+    public static final String LOG_TAG = "fragment-example";
     private CaloriesFragment caloriesFragment;
 
     @Override
