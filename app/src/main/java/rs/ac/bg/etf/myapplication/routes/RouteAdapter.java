@@ -5,20 +5,27 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentManager;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import rs.ac.bg.etf.myapplication.MainActivity;
+import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.ViewHolderRouteBinding;
 
 
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHolder> {
 
-  private final List<Route>routes;
+
   private final MainActivity mainActivity;
-    public RouteAdapter(MainActivity mainActivity,List<Route> routes) {
-        this.routes=routes;
+  private final RouteViewModel routeViewModel;
+
+
+    public RouteAdapter(MainActivity mainActivity) {
+
         this.mainActivity=mainActivity;
+        this.routeViewModel = new ViewModelProvider(mainActivity).get(RouteViewModel.class);
     }
 
     @NonNull
@@ -33,9 +40,9 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
 
     @Override
     public void onBindViewHolder(@NonNull RouteViewHolder holder, int position) {
-        Route route = routes.get(position);
+        Route route = routeViewModel.getRouteList().get(position);
         ViewHolderRouteBinding binding = holder.binding;
-        binding.routeLabel.setText(routes.get(position).getLabel());
+        binding.routeLabel.setText(route.getLabel());
         binding.routeImage.setImageDrawable(route.getImage());
         binding.routeName.setText(route.getName());
         binding.routeDifficulty.setText(route.getDifficulty());
@@ -45,7 +52,7 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
 
     @Override
     public int getItemCount() {
-        return routes.size();
+        return routeViewModel.getRouteList().size();
     }
 
     public class RouteViewHolder extends RecyclerView.ViewHolder{
@@ -59,7 +66,7 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
             binding.routeButtonLocation.setOnClickListener(view -> {
 
                 int routeIndex = getAdapterPosition();
-                String locationString = routes.get(routeIndex).getLocation();
+                String locationString = routeViewModel.getRouteList().get(routeIndex).getLocation();
                 locationString = locationString.replace(" ", "%20");
                 locationString = locationString.replace("," , "%2C");
                 Uri locationUri = Uri.parse("geo:0,0?q=" + locationString);
@@ -72,11 +79,7 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
 
             binding.routeButtonDescription.setOnClickListener(view -> {
                 int routeIndex = getAdapterPosition();
-
-                Intent intent = new Intent();
-                intent.setClass(mainActivity, RouteDetailsActivity.class);
-                intent.putExtra(RouteDetailsActivity.SELECTED_ROUTE_INDEX , routeIndex);
-                mainActivity.startActivity(intent);
+                routeViewModel.setSelectedRoute(routeViewModel.getRouteList().get(routeIndex));
             });
         }
     }

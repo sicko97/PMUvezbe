@@ -3,6 +3,7 @@ package rs.ac.bg.etf.myapplication.routes;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ import rs.ac.bg.etf.myapplication.databinding.FragmentRouteBrowseBinding;
 
 public class RouteBrowseFragment extends Fragment {
 
-
+    private RouteViewModel routeViewModel;
     private FragmentRouteBrowseBinding binding;
 
     public RouteBrowseFragment() {
@@ -38,15 +39,13 @@ public class RouteBrowseFragment extends Fragment {
 
         binding = FragmentRouteBrowseBinding.inflate(inflater,container,false);
 
-        MainActivity parentActivity = (MainActivity) getActivity();
 
-        List<Route> routes = new ArrayList<>();
-        for(int i = 0; i<9 ; i++){
-            routes.add(Route.createFromResources(getResources(),i));
-        }
+        MainActivity parentActivity = (MainActivity) getParentFragment().getActivity();
+
+        routeViewModel = new ViewModelProvider(parentActivity).get(RouteViewModel.class);
 
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new RouteAdapter(parentActivity,routes));
+        binding.recyclerView.setAdapter(new RouteAdapter(parentActivity));
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(parentActivity));
 
 
