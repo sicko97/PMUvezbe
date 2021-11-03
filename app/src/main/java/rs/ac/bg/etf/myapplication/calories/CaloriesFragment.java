@@ -38,7 +38,7 @@ public class CaloriesFragment extends Fragment {
 
         MainActivity parentActivity = (MainActivity) getActivity();
 
-        caloriesViewModel = new ViewModelProvider(this).get(CaloriesViewModel.class);
+        caloriesViewModel = new ViewModelProvider(parentActivity).get(CaloriesViewModel.class);
 
         caloriesViewModel.initByInstanceStateBundle(savedInstanceState);
 

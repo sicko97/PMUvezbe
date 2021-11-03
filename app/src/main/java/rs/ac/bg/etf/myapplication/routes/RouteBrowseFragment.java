@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
+import rs.ac.bg.etf.myapplication.LifeCycleAwareLogger;
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.FragmentRouteBrowseBinding;
@@ -23,7 +24,10 @@ public class RouteBrowseFragment extends Fragment {
     private FragmentRouteBrowseBinding binding;
 
     public RouteBrowseFragment() {
-        // Required empty public constructor
+        getLifecycle().addObserver(new LifeCycleAwareLogger(
+                MainActivity.LOG_TAG,
+                RouteBrowseFragment.class.getSimpleName()
+        ));
     }
 
 
