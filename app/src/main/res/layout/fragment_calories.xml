@@ -124,7 +124,8 @@
         app:layout_constraintLeft_toLeftOf="@id/radio_group"
         app:layout_constraintRight_toRightOf="@id/radio_group"
         app:layout_constraintBottom_toBottomOf="@id/duration"
-        app:layout_constraintTop_toTopOf="@id/duration"/>
+        app:layout_constraintTop_toTopOf="@id/duration"
+        tools:listitem="@android:layout/simple_dropdown_item_1line"/>
 
     <Button
         android:id="@+id/calculate"
@@ -144,7 +145,8 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calculate"
-        android:textSize="@dimen/calories_result_text_size"/>
+        android:textSize="@dimen/calories_result_text_size"
+        tools:text="@string/calories_burned"/>
 
     <TextView
         android:id="@+id/needed"
@@ -154,6 +156,7 @@
         app:layout_constraintLeft_toLeftOf="@id/burned"
         app:layout_constraintRight_toRightOf="@id/burned"
         app:layout_constraintTop_toBottomOf="@id/burned"
-        android:textSize="@dimen/calories_result_text_size"/>
+        android:textSize="@dimen/calories_result_text_size"
+        tools:text="@string/calories_needed"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
