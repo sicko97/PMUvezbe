@@ -13,13 +13,20 @@
         <action
             android:id="@+id/action_show_route_details"
             app:destination="@id/route_details" />
+
     </fragment>
 
     <fragment
         android:id="@+id/route_details"
         android:name="rs.ac.bg.etf.myapplication.routes.RouteDetailsFragment"
         android:label="route_details_fragment"
-        tools:layout="@layout/fragment_route_details"/>
+        tools:layout="@layout/fragment_route_details">
+
+        <argument
+            android:name="route_index"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 
     <fragment
         android:id="@+id/calories"
