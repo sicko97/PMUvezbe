@@ -17,13 +17,16 @@ import rs.ac.bg.etf.myapplication.databinding.ViewHolderRouteBinding;
 
 public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHolder> {
 
+    public interface Callback<T>{
+        void invoke(T parameter);
+    }
 
   private final MainActivity mainActivity;
   private final RouteViewModel routeViewModel;
+  private final Callback<Integer> callback;
 
-
-    public RouteAdapter(MainActivity mainActivity) {
-
+    public RouteAdapter(MainActivity mainActivity , Callback<Integer> callback) {
+        this.callback = callback;
         this.mainActivity=mainActivity;
         this.routeViewModel = new ViewModelProvider(mainActivity).get(RouteViewModel.class);
     }
@@ -55,6 +58,9 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
         return routeViewModel.getRouteList().size();
     }
 
+
+
+
     public class RouteViewHolder extends RecyclerView.ViewHolder{
 
         public ViewHolderRouteBinding binding;
@@ -79,7 +85,8 @@ public class RouteAdapter extends RecyclerView.Adapter<RouteAdapter.RouteViewHol
 
             binding.routeButtonDescription.setOnClickListener(view -> {
                 int routeIndex = getAdapterPosition();
-                routeViewModel.setSelectedRoute(routeViewModel.getRouteList().get(routeIndex));
+               // routeViewModel.setSelectedRoute(routeViewModel.getRouteList().get(routeIndex));
+                callback.invoke(routeIndex);
             });
         }
     }

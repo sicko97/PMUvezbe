@@ -28,16 +28,15 @@ public class RouteDetailsFragment extends Fragment {
         MainActivity parentActivity = (MainActivity) getParentFragment().getActivity();
         routeViewModel = new ViewModelProvider(parentActivity).get(RouteViewModel.class);
 
-        routeViewModel.getSelectedRoute().observe(getViewLifecycleOwner(), selectedRoute -> {
-            if (selectedRoute != null) {
+        Route selectedRoute=routeViewModel.getRouteList().get(RouteDetailsFragmentArgs.fromBundle(requireArguments()).getRouteIndex());
+
+
                 binding.routeImage.setImageDrawable(selectedRoute.getImage());
                 binding.routeLabel.setText(selectedRoute.getLabel());
                 binding.routeName.setText(selectedRoute.getName());
                 binding.routeLength.setText(selectedRoute.getLength() + "km");
                 binding.routeDifficulty.setText(selectedRoute.getDifficulty());
                 binding.routeDescription.setText(selectedRoute.getDescription());
-            }
-        });
 
         return binding.getRoot();
     }

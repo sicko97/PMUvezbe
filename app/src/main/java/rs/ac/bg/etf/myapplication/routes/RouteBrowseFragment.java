@@ -22,6 +22,7 @@ import rs.ac.bg.etf.myapplication.LifeCycleAwareLogger;
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.FragmentRouteBrowseBinding;
+import   rs.ac.bg.etf.myapplication.routes.RouteBrowseFragmentDirections.ActionShowRouteDetails;
 
 
 public class RouteBrowseFragment extends Fragment {
@@ -54,17 +55,16 @@ public class RouteBrowseFragment extends Fragment {
         }
         routeViewModel.setRouteList(routes);
 
-        routeViewModel.getSelectedRoute().observe(getViewLifecycleOwner() , selectedRoute->{
-            if(selectedRoute != null ){
-                NavDirections navDirections = RouteBrowseFragmentDirections.actionShowRouteDetails();
-                navController.navigate(navDirections);
-            }
-        });
-
-        routeViewModel = new ViewModelProvider(parentActivity).get(RouteViewModel.class);
-
+        RouteAdapter routeAdapter = new RouteAdapter(
+                parentActivity,
+                routeIndex ->{
+                    ActionShowRouteDetails action = RouteBrowseFragmentDirections.actionShowRouteDetails();
+                    action.setRouteIndex(routeIndex);
+                    navController.navigate(action);
+                }
+        );
         binding.recyclerView.setHasFixedSize(true);
-        binding.recyclerView.setAdapter(new RouteAdapter(parentActivity));
+        binding.recyclerView.setAdapter(routeAdapter);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(parentActivity));
 
 
