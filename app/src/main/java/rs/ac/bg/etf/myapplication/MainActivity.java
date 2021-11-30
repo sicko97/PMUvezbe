@@ -6,10 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.NavHost;
 import androidx.navigation.fragment.NavHostFragment;
 
 import rs.ac.bg.etf.myapplication.calories.CaloriesFragment;
+import rs.ac.bg.etf.myapplication.calories.CaloriesFragmentDirections;
 import rs.ac.bg.etf.myapplication.databinding.ActivityMainBinding;
 import rs.ac.bg.etf.myapplication.routes.RouteBrowseFragment;
 import rs.ac.bg.etf.myapplication.routes.RouteFragment;
@@ -45,7 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_item_routes:
                     switch(navController.getCurrentDestination().getId()){
                         case R.id.calories:
-                            navController.navigate(R.id.action_calories_pop);
+                            NavDirections action =
+                                    CaloriesFragmentDirections.actionCaloriesPop();
+                            navController.navigate(action);
                             break;
                         default:
                             //nothing
@@ -55,11 +59,13 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.menu_item_calories:
                     switch(navController.getCurrentDestination().getId()){
                         case R.id.route_browse:
-                            navController.navigate(R.id.action_global_calories);
+                            NavDirections action = NavGraphDirections.actionGlobalCalories();
+                            navController.navigate(action);
                             break;
 
                         case R.id.route_details:
-                            navController.navigate(R.id.action_global_calories);
+                             action = NavGraphDirections.actionGlobalCalories();
+                            navController.navigate(action);
                             break;
 
                         default:
@@ -79,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
             switch (navController.getCurrentDestination().getId()){
                 case R.id.route_details:
                     routeViewModel.setSelectedRoute(null);
+                    break;
+                case R.id.calories:
+                    binding.bottomNavigation.getMenu().getItem(0).setChecked(true);
                     break;
             }
         super.onBackPressed();
