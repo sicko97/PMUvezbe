@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavController;
+import androidx.navigation.NavHost;
+import androidx.navigation.fragment.NavHostFragment;
 
 import rs.ac.bg.etf.myapplication.calories.CaloriesFragment;
 import rs.ac.bg.etf.myapplication.databinding.ActivityMainBinding;
@@ -17,7 +20,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     private FragmentManager fragmentManager;
     private RouteViewModel routeViewModel;
-    public static final String LOG_TAG="fragment-example";
+    private NavController navController;
+    public static final String LOG_TAG = "fragment-example";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,18 +33,20 @@ public class MainActivity extends AppCompatActivity {
 
         fragmentManager = getSupportFragmentManager();
 
+        NavHostFragment navHost = (NavHostFragment) fragmentManager
+                .findFragmentById(R.id.nav_host_fragment);
+
+        navController = navHost.getNavController();
+
         binding.bottomNavigation.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
 
                 case R.id.menu_item_routes:
-                    // Toast.makeText(this, "routes", Toast.LENGTH_SHORT).show();
-
-
+                    navController.navigate(R.id.route_browse);
                     return true;
                 case R.id.menu_item_calories:
-                    //     Toast.makeText(this, "calories", Toast.LENGTH_SHORT).show();
-
+                   navController.navigate(R.id.calories);
                     return true;
             }
 
@@ -51,9 +57,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(binding.bottomNavigation.getSelectedItemId() == R.id.menu_item_routes){
-                routeViewModel.setSelectedRoute(null);
-            }
-        super.onBackPressed();
+        if (binding.bottomNavigation.getSelectedItemId() == R.id.menu_item_routes) {
+            routeViewModel.setSelectedRoute(null);
         }
+        super.onBackPressed();
+    }
 }

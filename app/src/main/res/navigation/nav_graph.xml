@@ -3,22 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/routeBrowseFragment">
+    app:startDestination="@id/route_browse">
 
     <fragment
-        android:id="@+id/routeBrowseFragment"
+        android:id="@+id/route_browse"
         android:name="rs.ac.bg.etf.myapplication.routes.RouteBrowseFragment"
-        android:label="RouteBrowseFragment"
+        android:label="route_browse_fragment"
         tools:layout="@layout/fragment_route_browse"/>
 
     <fragment
-        android:id="@+id/routeDetailsFragment"
+        android:id="@+id/route_details"
         android:name="rs.ac.bg.etf.myapplication.routes.RouteDetailsFragment"
-        android:label="RouteDetailsFragment"
+        android:label="route_details_fragment"
         tools:layout="@layout/fragment_route_details"/>
 
     <fragment
-        android:id="@+id/caloriesFragment"
+        android:id="@+id/calories"
         android:name="rs.ac.bg.etf.myapplication.calories.CaloriesFragment"
         android:label="fragment_calories"
         tools:layout="@layout/fragment_calories" />
