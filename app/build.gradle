@@ -1,5 +1,15 @@
 plugins {
     id 'com.android.application'
+    id 'androidx.navigation.safeargs'
+
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs += 'build/generated/source/navigation-args'
+        }
+    }
 }
 
 android {
