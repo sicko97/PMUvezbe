@@ -43,10 +43,29 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
 
                 case R.id.menu_item_routes:
-                    navController.navigate(R.id.action_calories_pop);
+                    switch(navController.getCurrentDestination().getId()){
+                        case R.id.calories:
+                            navController.navigate(R.id.action_calories_pop);
+                            break;
+                        default:
+                            //nothing
+                            break;
+                    }
                     return true;
                 case R.id.menu_item_calories:
-                   navController.navigate(R.id.action_global_calories);
+                    switch(navController.getCurrentDestination().getId()){
+                        case R.id.route_browse:
+                            navController.navigate(R.id.action_global_calories);
+                            break;
+
+                        case R.id.route_details:
+                            navController.navigate(R.id.action_global_calories);
+                            break;
+
+                        default:
+                            //nothing
+                            break;
+                    }
                     return true;
             }
 
@@ -57,9 +76,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (binding.bottomNavigation.getSelectedItemId() == R.id.menu_item_routes) {
-            routeViewModel.setSelectedRoute(null);
-        }
+            switch (navController.getCurrentDestination().getId()){
+                case R.id.route_details:
+                    routeViewModel.setSelectedRoute(null);
+                    break;
+            }
         super.onBackPressed();
     }
 }
