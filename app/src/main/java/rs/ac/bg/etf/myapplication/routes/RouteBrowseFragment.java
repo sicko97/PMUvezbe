@@ -7,7 +7,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
-import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -20,9 +19,8 @@ import java.util.List;
 
 import rs.ac.bg.etf.myapplication.LifeCycleAwareLogger;
 import rs.ac.bg.etf.myapplication.MainActivity;
-import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.FragmentRouteBrowseBinding;
-import   rs.ac.bg.etf.myapplication.routes.RouteBrowseFragmentDirections.ActionShowRouteDetails;
+import rs.ac.bg.etf.myapplication.routes.RouteBrowseFragmentDirections.ActionShowRouteDetails;
 
 
 public class RouteBrowseFragment extends Fragment {
@@ -30,6 +28,7 @@ public class RouteBrowseFragment extends Fragment {
     private RouteViewModel routeViewModel;
     private FragmentRouteBrowseBinding binding;
     private NavController navController;
+    private MainActivity mainActivity;
 
     public RouteBrowseFragment() {
         getLifecycle().addObserver(new LifeCycleAwareLogger(
@@ -38,26 +37,35 @@ public class RouteBrowseFragment extends Fragment {
         ));
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
+        mainActivity = (MainActivity) requireActivity();
+
+        routeViewModel = new ViewModelProvider(mainActivity).get(RouteViewModel.class);
+        List<Route> routes = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            routes.add(Route.createFromResources(getResources(), i));
+        }
+        routeViewModel.setRouteList(routes);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        binding = FragmentRouteBrowseBinding.inflate(inflater,container,false);
+        binding = FragmentRouteBrowseBinding.inflate(inflater, container, false);
 
-        MainActivity parentActivity = (MainActivity) getActivity();
-        routeViewModel = new ViewModelProvider(parentActivity).get(RouteViewModel.class);
 
-        List<Route> routes = new ArrayList<>();
-        for(int i = 0; i<9 ; i++){
-            routes.add(Route.createFromResources(getResources(),i));
-        }
-        routeViewModel.setRouteList(routes);
+        getViewLifecycleOwner().getLifecycle().addObserver(new LifeCycleAwareLogger(
+                MainActivity.LOG_TAG,
+                RouteBrowseFragment.class.getSimpleName() + "View"));
+
 
         RouteAdapter routeAdapter = new RouteAdapter(
-                parentActivity,
-                routeIndex ->{
+                mainActivity,
+                routeIndex -> {
                     ActionShowRouteDetails action = RouteBrowseFragmentDirections.actionShowRouteDetails();
                     action.setRouteIndex(routeIndex);
                     navController.navigate(action);
@@ -65,7 +73,7 @@ public class RouteBrowseFragment extends Fragment {
         );
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setAdapter(routeAdapter);
-        binding.recyclerView.setLayoutManager(new LinearLayoutManager(parentActivity));
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
 
 
         return binding.getRoot();
