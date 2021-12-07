@@ -7,8 +7,16 @@
         android:icon="@drawable/outline_terrain_24"/>
 
     <item
+        android:id="@+id/menu_item_workouts"
+        android:title="@string/main_button_label_workouts"
+        android:icon="@drawable/outline_bar_chart_black_48"/>
+
+    <item
         android:id="@+id/menu_item_calories"
         android:title="@string/main_navigation_label_calories"
         android:icon="@drawable/outline_directions_run_24"/>
+
+
+
 
 </menu>

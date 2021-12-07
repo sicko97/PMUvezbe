@@ -31,4 +31,5 @@
     <string name="route_toolbar_label">Pesacke rute</string>
     <string name="calories_toolbar_label">Calories Calculator</string>
     <string name="workout_toolbar_label">Treninzi</string>
+    <string name="main_button_label_workouts">Workouts</string>
 </resources>
