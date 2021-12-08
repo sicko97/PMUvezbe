@@ -69,6 +69,10 @@ public class MainActivity extends AppCompatActivity {
                             break;
                     }
                     return true;
+
+                case R.id.menu_item_workouts:
+
+                    break;
             }
 
             return false;

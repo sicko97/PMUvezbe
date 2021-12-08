@@ -38,5 +38,14 @@
             app:popUpTo="@id/calories"
             app:popUpToInclusive="true" />
     </fragment>
+
     <action android:id="@+id/action_global_calories" app:destination="@id/calories" />
+    <fragment
+        android:id="@+id/workoutFragment"
+        android:name="rs.ac.bg.etf.myapplication.workout.WorkoutFragment"
+        android:label="fragment_workout"
+        tools:layout="@layout/fragment_workout" />
+    <action
+        android:id="@+id/action_global_workout"
+        app:destination="@id/workoutFragment" />
 </navigation>
