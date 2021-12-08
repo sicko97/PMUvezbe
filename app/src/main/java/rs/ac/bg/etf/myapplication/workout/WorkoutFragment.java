@@ -8,13 +8,18 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.Date;
+
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
+import rs.ac.bg.etf.myapplication.data.RunDatabase;
+import rs.ac.bg.etf.myapplication.data.Workout;
 import rs.ac.bg.etf.myapplication.databinding.FragmentWorkoutBinding;
 
 public class WorkoutFragment extends Fragment {
@@ -39,6 +44,16 @@ public class WorkoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentWorkoutBinding.inflate(inflater,container,false);
+
+      RunDatabase runDatabase =  Room.databaseBuilder(
+                mainActivity.getApplicationContext(),
+                RunDatabase.class,"run-app.db")
+                .allowMainThreadQueries()
+                .build();
+      runDatabase.workoutDao().insert(
+              new Workout(0,new Date(),"dummy",11,60)
+      );
+
         return binding.getRoot();
     }
 
