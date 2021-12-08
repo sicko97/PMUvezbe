@@ -45,11 +45,7 @@ public class WorkoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentWorkoutBinding.inflate(inflater,container,false);
 
-      RunDatabase runDatabase =  Room.databaseBuilder(
-                mainActivity.getApplicationContext(),
-                RunDatabase.class,"run-app.db")
-                .allowMainThreadQueries()
-                .build();
+      RunDatabase runDatabase =  RunDatabase.getInstance(mainActivity);
       runDatabase.workoutDao().insert(
               new Workout(0,new Date(),"dummy",11,60)
       );
