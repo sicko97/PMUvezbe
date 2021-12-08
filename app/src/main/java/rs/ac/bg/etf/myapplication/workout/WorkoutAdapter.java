@@ -6,12 +6,21 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.List;
+
+import rs.ac.bg.etf.myapplication.data.Workout;
 import rs.ac.bg.etf.myapplication.databinding.ViewHolderWorkoutBinding;
 
 public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutViewHolder>  {
 
+    private List<Workout> workoutList;
+
     public WorkoutAdapter() {
 
+    }
+
+    public void setWorkoutList(List<Workout> workoutList){
+        this.workoutList = workoutList;
     }
 
     @NonNull
@@ -29,11 +38,12 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
     @Override
     public void onBindViewHolder(@NonNull WorkoutViewHolder holder, int position) {
         ViewHolderWorkoutBinding binding = holder.binding;
+        holder.bind(workoutList.get(position));
     }
 
     @Override
     public int getItemCount() {
-       return 0;
+       return workoutList.size();
     }
 
 
@@ -47,6 +57,22 @@ public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.WorkoutV
             this.binding = viewHolderWorkoutBinding;
         }
 
+        public void bind(Workout workout){
+
+            binding.workoutDate.setText(DateTimeUtil.getSimpleDateFormat().format(
+                    workout.getDate()
+            ));
+            binding.workoutLabel.setText(
+                    workout.getLabel()
+            );
+            binding.workoutDistance.setText(String.format("%.2f km",
+                    workout.getDistance()));
+            binding.workoutPace.setText(
+                    String.format(
+                            "%s min/km",DateTimeUtil.realMinutesToString(workout.getDuration()/workout.getDistance())));
+            binding.workoutDuration.setText(String.format("%.2f km",
+                    workout.getDuration()));
+        }
     }
 
 

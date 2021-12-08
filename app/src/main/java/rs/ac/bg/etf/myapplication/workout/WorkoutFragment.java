@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.room.Room;
 
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.Date;
+import java.util.List;
 
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
@@ -43,12 +45,18 @@ public class WorkoutFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        binding = FragmentWorkoutBinding.inflate(inflater,container,false);
+        binding = FragmentWorkoutBinding.inflate(inflater, container, false);
 
-      RunDatabase runDatabase =  RunDatabase.getInstance(mainActivity);
-      runDatabase.workoutDao().insert(
-              new Workout(0,new Date(),"dummy",11,60)
-      );
+        RunDatabase runDatabase = RunDatabase.getInstance(mainActivity);
+        runDatabase.workoutDao().insert(
+                new Workout(0, new Date(), "dummy", 11, 60)
+        );
+
+        WorkoutAdapter workoutAdapter = new WorkoutAdapter();
+        workoutAdapter.setWorkoutList(runDatabase.workoutDao().getAll());
+
+        binding.recyclerView.setAdapter(workoutAdapter);
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
 
         return binding.getRoot();
     }
