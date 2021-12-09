@@ -1,6 +1,9 @@
 package rs.ac.bg.etf.myapplication.workout;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,17 +12,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.room.Room;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.Date;
-import java.util.List;
 
 import rs.ac.bg.etf.myapplication.MainActivity;
-import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.data.RunDatabase;
 import rs.ac.bg.etf.myapplication.data.Workout;
 import rs.ac.bg.etf.myapplication.databinding.FragmentWorkoutBinding;
@@ -53,9 +49,12 @@ public class WorkoutFragment extends Fragment {
         );
 
         WorkoutAdapter workoutAdapter = new WorkoutAdapter();
-        workoutAdapter.setWorkoutList(runDatabase.workoutDao().getAll());
+        runDatabase.workoutDao().getAllLiveData().observe(
+                getViewLifecycleOwner(),
+                workoutAdapter::setWorkoutList);
 
         binding.recyclerView.setAdapter(workoutAdapter);
+
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
 
         return binding.getRoot();
