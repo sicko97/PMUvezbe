@@ -27,6 +27,10 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         app:layout_constraintBottom_toTopOf="@id/workout_label"
+        app:endIconMode="custom"
+        app:endIconTint="?attr/colorPrimary"
+        app:endIconDrawable="@drawable/outline_calendar_month_24"
+        app:endIconContentDescription="calendar_icon"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
         <com.google.android.material.textfield.TextInputEditText
