@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="workout_create_date">Date</string>
+    <string name="workout_create_duration">Duration</string>
+    <string name="workout_toolbar_create_label">New Toolbar</string>
+</resources>

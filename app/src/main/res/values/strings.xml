@@ -32,6 +32,13 @@
     <string name="calories_toolbar_label">Calories Calculator</string>
     <string name="workout_toolbar_label">Workouts</string>
     <string name="main_button_label_workouts">Workouts</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="workout_create_date">Date</string>
+    <string name="workout_create_label">Label</string>
+    <string name="workjout_create_distance">Distance</string>
+    <string name="workout_create_duration">Duration</string>
+    <string name="workout_toolbar_create_label">New Toolbar</string>
 
 
 </resources>
