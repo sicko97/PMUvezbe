@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
@@ -43,6 +44,8 @@ public class WorkoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentWorkoutBinding.inflate(inflater, container, false);
 
+
+
         RunDatabase runDatabase = RunDatabase.getInstance(mainActivity);
         runDatabase.workoutDao().insert(
                 new Workout(0, new Date(), "dummy", 11, 60)
@@ -56,6 +59,12 @@ public class WorkoutFragment extends Fragment {
         binding.recyclerView.setAdapter(workoutAdapter);
 
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
+
+        binding.floatingActionButton.setOnClickListener(view -> {
+            NavDirections action = WorkoutFragmentDirections.actionWorkoutCreate();
+            navController.navigate(action);
+        });
+
 
         return binding.getRoot();
     }
