@@ -41,4 +41,8 @@
     <string name="workout_toolbar_create_label">New Toolbar</string>
 
 
+    <!-- Workout -->
+
+    <string name="workout_create_error_empty">Empty field</string>
+
 </resources>
