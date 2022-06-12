@@ -105,6 +105,12 @@ public class CaloriesFragment extends Fragment {
             double met = metValues.getFloat(binding.spinner.getSelectedItemPosition(), 0);
             metValues.recycle();
             caloriesViewModel.updateValues(weight, height, age, isMale, duration, met);
+
+            try {
+                Thread.sleep(4000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         });
         return binding.getRoot();
     }

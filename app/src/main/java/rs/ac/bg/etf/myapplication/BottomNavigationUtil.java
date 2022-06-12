@@ -1,16 +1,9 @@
 package rs.ac.bg.etf.myapplication;
 
-import android.view.MenuItem;
-
-import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
-
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
