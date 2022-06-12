@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import rs.ac.bg.etf.myapplication.databinding.ActivityMainBinding;
 
-
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;

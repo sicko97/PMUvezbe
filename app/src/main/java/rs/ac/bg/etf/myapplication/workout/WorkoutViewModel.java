@@ -5,13 +5,18 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.lifecycle.HiltViewModel;
 import rs.ac.bg.etf.myapplication.data.Workout;
 import rs.ac.bg.etf.myapplication.data.WorkoutRepository;
 
+@HiltViewModel
 public class WorkoutViewModel extends ViewModel {
 
     private final WorkoutRepository workoutRepository;
 
+    @Inject
     public WorkoutViewModel(WorkoutRepository workoutRepository) {
         this.workoutRepository = workoutRepository;
     }

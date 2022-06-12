@@ -17,14 +17,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import java.util.Date;
 
+import dagger.hilt.android.AndroidEntryPoint;
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.data.RunDatabase;
 import rs.ac.bg.etf.myapplication.data.Workout;
 import rs.ac.bg.etf.myapplication.data.WorkoutRepository;
 import rs.ac.bg.etf.myapplication.databinding.FragmentWorkoutBinding;
 
+@AndroidEntryPoint
 public class WorkoutFragment extends Fragment {
-
     private FragmentWorkoutBinding binding;
     private WorkoutViewModel workoutViewModel;
     private NavController navController;
@@ -38,16 +39,7 @@ public class WorkoutFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivity = (MainActivity) requireActivity();
-        RunDatabase runDatabase = RunDatabase.getInstance(mainActivity);
-        WorkoutRepository workoutRepository = new WorkoutRepository(runDatabase.workoutDao());
-        ViewModelProvider.Factory factory = new ViewModelProvider.Factory(){
-            @NonNull
-            @Override
-            public <T extends ViewModel> T create(@NonNull Class<T> modelClass){
-                return (T) new WorkoutViewModel(workoutRepository);
-            }
-        };
-        workoutViewModel = new ViewModelProvider(mainActivity, factory).get(WorkoutViewModel.class);
+        workoutViewModel = new ViewModelProvider(mainActivity).get(WorkoutViewModel.class);
     }
 
     @Override
