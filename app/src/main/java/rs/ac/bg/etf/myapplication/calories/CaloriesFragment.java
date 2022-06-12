@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.os.Handler;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,7 @@ import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.FragmentCaloriesBinding;
 import rs.ac.bg.etf.myapplication.threading.CustomDequeThread;
+import rs.ac.bg.etf.myapplication.threading.CustomLooperThread;
 
 public class CaloriesFragment extends Fragment {
 
@@ -37,7 +39,7 @@ public class CaloriesFragment extends Fragment {
     private MainActivity mainActivity;
     private NavController navController;
 
-    private CustomDequeThread customDequeThread;
+    private CustomLooperThread customLooperThread;
 
     public CaloriesFragment() {
         //  getLifecycle().addObserver(new LifeCycleAwareLogger(MainActivity.LOG_TAG , CaloriesFragment.class.getSimpleName()));
@@ -47,8 +49,9 @@ public class CaloriesFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        customDequeThread = new CustomDequeThread();
-        customDequeThread.start();
+        customLooperThread = new CustomLooperThread();
+        customLooperThread.start();
+
         mainActivity = (MainActivity) requireActivity();
         caloriesViewModel = new ViewModelProvider(this).get(CaloriesViewModel.class);
 
@@ -114,8 +117,11 @@ public class CaloriesFragment extends Fragment {
             metValues.recycle();
             caloriesViewModel.updateValues(weight, height, age, isMale, duration, met);
 
+
+            Handler newThreadHandler = new Handler(customLooperThread.getLooper());
+
             final int SLEEP_PERIOD = 1000;
-           customDequeThread.getRunnableDeque().addLast(() -> {
+            newThreadHandler.post(() -> {
                 SystemClock.sleep(SLEEP_PERIOD);
                 mainActivity.runOnUiThread(() -> binding.calculate.setBackgroundColor(Color.GREEN));
                 SystemClock.sleep(SLEEP_PERIOD);
