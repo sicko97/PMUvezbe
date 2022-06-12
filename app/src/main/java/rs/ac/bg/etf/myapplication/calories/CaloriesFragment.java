@@ -109,12 +109,14 @@ public class CaloriesFragment extends Fragment {
             caloriesViewModel.updateValues(weight, height, age, isMale, duration, met);
 
             final int SLEEP_PERIOD = 1000;
-            SystemClock.sleep(SLEEP_PERIOD);
-            binding.calculate.setBackgroundColor(Color.GREEN);
-            SystemClock.sleep(SLEEP_PERIOD);
-            binding.calculate.setBackgroundColor(Color.BLUE);
-            SystemClock.sleep(SLEEP_PERIOD);
-            binding.calculate.setBackgroundColor(Color.RED);
+            new Thread(() -> {
+                SystemClock.sleep(SLEEP_PERIOD);
+                binding.calculate.setBackgroundColor(Color.GREEN);
+                SystemClock.sleep(SLEEP_PERIOD);
+                binding.calculate.setBackgroundColor(Color.BLUE);
+                SystemClock.sleep(SLEEP_PERIOD);
+                binding.calculate.setBackgroundColor(Color.RED);
+            }).start();
 
         });
         return binding.getRoot();
