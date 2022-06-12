@@ -28,6 +28,7 @@ import rs.ac.bg.etf.myapplication.LifeCycleAwareLogger;
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.databinding.FragmentCaloriesBinding;
+import rs.ac.bg.etf.myapplication.threading.CustomDequeThread;
 
 public class CaloriesFragment extends Fragment {
 
@@ -36,6 +37,8 @@ public class CaloriesFragment extends Fragment {
     private MainActivity mainActivity;
     private NavController navController;
 
+    private CustomDequeThread customDequeThread;
+
     public CaloriesFragment() {
         //  getLifecycle().addObserver(new LifeCycleAwareLogger(MainActivity.LOG_TAG , CaloriesFragment.class.getSimpleName()));
     }
@@ -43,6 +46,9 @@ public class CaloriesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        customDequeThread = new CustomDequeThread();
+        customDequeThread.start();
         mainActivity = (MainActivity) requireActivity();
         caloriesViewModel = new ViewModelProvider(this).get(CaloriesViewModel.class);
 
@@ -109,7 +115,7 @@ public class CaloriesFragment extends Fragment {
             caloriesViewModel.updateValues(weight, height, age, isMale, duration, met);
 
             final int SLEEP_PERIOD = 1000;
-            new Thread(() -> {
+           customDequeThread.getRunnableDeque().addLast(() -> {
                 SystemClock.sleep(SLEEP_PERIOD);
                 mainActivity.runOnUiThread(() -> binding.calculate.setBackgroundColor(Color.GREEN));
                 SystemClock.sleep(SLEEP_PERIOD);
@@ -120,7 +126,7 @@ public class CaloriesFragment extends Fragment {
                 mainActivity.runOnUiThread(() -> binding.calculate.setText("okay 1"));
                 SystemClock.sleep(SLEEP_PERIOD);
                 binding.calculate.post(() -> binding.calculate.setText("okay 2"));
-            }).start();
+            });
 
         });
         return binding.getRoot();
