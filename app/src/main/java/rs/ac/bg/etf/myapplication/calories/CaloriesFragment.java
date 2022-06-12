@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -106,11 +107,8 @@ public class CaloriesFragment extends Fragment {
             metValues.recycle();
             caloriesViewModel.updateValues(weight, height, age, isMale, duration, met);
 
-            try {
-                Thread.sleep(4000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            SystemClock.sleep(6000);
+
         });
         return binding.getRoot();
     }
