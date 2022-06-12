@@ -13,6 +13,7 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 
 import android.os.Handler;
+import android.os.HandlerThread;
 import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -39,7 +40,7 @@ public class CaloriesFragment extends Fragment {
     private MainActivity mainActivity;
     private NavController navController;
 
-    private CustomLooperThread customLooperThread;
+    private HandlerThread handlerThread;
 
     public CaloriesFragment() {
         //  getLifecycle().addObserver(new LifeCycleAwareLogger(MainActivity.LOG_TAG , CaloriesFragment.class.getSimpleName()));
@@ -49,8 +50,8 @@ public class CaloriesFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        customLooperThread = new CustomLooperThread();
-        customLooperThread.start();
+        handlerThread = new HandlerThread("handler-thread-name");
+        handlerThread.start();
 
         mainActivity = (MainActivity) requireActivity();
         caloriesViewModel = new ViewModelProvider(this).get(CaloriesViewModel.class);
@@ -118,7 +119,7 @@ public class CaloriesFragment extends Fragment {
             caloriesViewModel.updateValues(weight, height, age, isMale, duration, met);
 
 
-            Handler newThreadHandler = new Handler(customLooperThread.getLooper());
+            Handler newThreadHandler = new Handler(handlerThread.getLooper());
 
             final int SLEEP_PERIOD = 1000;
             newThreadHandler.post(() -> {
