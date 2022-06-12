@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.myapplication.calories;
 
 import android.content.res.TypedArray;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -107,7 +108,13 @@ public class CaloriesFragment extends Fragment {
             metValues.recycle();
             caloriesViewModel.updateValues(weight, height, age, isMale, duration, met);
 
-            SystemClock.sleep(6000);
+            final int SLEEP_PERIOD = 1000;
+            SystemClock.sleep(SLEEP_PERIOD);
+            binding.calculate.setBackgroundColor(Color.GREEN);
+            SystemClock.sleep(SLEEP_PERIOD);
+            binding.calculate.setBackgroundColor(Color.BLUE);
+            SystemClock.sleep(SLEEP_PERIOD);
+            binding.calculate.setBackgroundColor(Color.RED);
 
         });
         return binding.getRoot();
