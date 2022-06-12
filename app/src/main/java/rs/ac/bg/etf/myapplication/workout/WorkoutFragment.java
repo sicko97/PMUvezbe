@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDirections;
@@ -19,6 +20,7 @@ import java.util.Date;
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.data.RunDatabase;
 import rs.ac.bg.etf.myapplication.data.Workout;
+import rs.ac.bg.etf.myapplication.data.WorkoutRepository;
 import rs.ac.bg.etf.myapplication.databinding.FragmentWorkoutBinding;
 
 public class WorkoutFragment extends Fragment {
@@ -36,7 +38,16 @@ public class WorkoutFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mainActivity = (MainActivity) requireActivity();
-        workoutViewModel = new ViewModelProvider(mainActivity).get(WorkoutViewModel.class);
+        RunDatabase runDatabase = RunDatabase.getInstance(mainActivity);
+        WorkoutRepository workoutRepository = new WorkoutRepository(runDatabase.workoutDao());
+        ViewModelProvider.Factory factory = new ViewModelProvider.Factory(){
+            @NonNull
+            @Override
+            public <T extends ViewModel> T create(@NonNull Class<T> modelClass){
+                return (T) new WorkoutViewModel(workoutRepository);
+            }
+        };
+        workoutViewModel = new ViewModelProvider(mainActivity, factory).get(WorkoutViewModel.class);
     }
 
     @Override
@@ -44,15 +55,8 @@ public class WorkoutFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentWorkoutBinding.inflate(inflater, container, false);
 
-
-
-        RunDatabase runDatabase = RunDatabase.getInstance(mainActivity);
-        runDatabase.workoutDao().insert(
-                new Workout(0, new Date(), "dummy", 11, 60)
-        );
-
         WorkoutAdapter workoutAdapter = new WorkoutAdapter();
-        runDatabase.workoutDao().getAllLiveData().observe(
+        workoutViewModel.getWorkoutList().observe(
                 getViewLifecycleOwner(),
                 workoutAdapter::setWorkoutList);
 

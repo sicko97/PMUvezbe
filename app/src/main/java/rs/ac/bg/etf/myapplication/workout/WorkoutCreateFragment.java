@@ -26,6 +26,7 @@ import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.data.RunDatabase;
 import rs.ac.bg.etf.myapplication.data.Workout;
+import rs.ac.bg.etf.myapplication.data.WorkoutRepository;
 import rs.ac.bg.etf.myapplication.databinding.FragmentWorkoutCreateBinding;
 
 public class WorkoutCreateFragment extends Fragment {
@@ -42,7 +43,16 @@ public class WorkoutCreateFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         mainActivity = (MainActivity) requireActivity();
-        workoutViewModel = new ViewModelProvider(mainActivity).get(WorkoutViewModel.class);
+        RunDatabase runDatabase = RunDatabase.getInstance(mainActivity);
+        WorkoutRepository workoutRepository = new WorkoutRepository(runDatabase.workoutDao());
+        ViewModelProvider.Factory factory = new ViewModelProvider.Factory(){
+            @NonNull
+            @Override
+            public <T extends ViewModel> T create(@NonNull Class<T> modelClass){
+                return (T) new WorkoutViewModel(workoutRepository);
+            }
+        };
+        workoutViewModel = new ViewModelProvider(mainActivity,factory).get(WorkoutViewModel.class);
 
     }
 
@@ -74,8 +84,7 @@ public class WorkoutCreateFragment extends Fragment {
             Number duration = (Number) parse(binding.workoutDuration, NumberFormat.getInstance());
 
             if (!(date == null || distance == null || label == null || duration == null)) {
-                RunDatabase runDatabase = RunDatabase.getInstance(mainActivity);
-                runDatabase.workoutDao().insert(new Workout(
+                        workoutViewModel.insertWorkout(new Workout(
                         0,
                         date,
                         label,
