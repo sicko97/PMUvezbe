@@ -32,4 +32,8 @@ public class WorkoutRepository {
         return workoutDao.getAllLiveData();
     }
 
+    public LiveData<List<Workout>> getAllSortedLiveData() {
+        return workoutDao.getAllSortedLiveData();
+    }
+
 }
