@@ -19,6 +19,7 @@ import java.util.Date;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import rs.ac.bg.etf.myapplication.MainActivity;
+import rs.ac.bg.etf.myapplication.R;
 import rs.ac.bg.etf.myapplication.data.RunDatabase;
 import rs.ac.bg.etf.myapplication.data.Workout;
 import rs.ac.bg.etf.myapplication.data.WorkoutRepository;
@@ -46,6 +47,14 @@ public class WorkoutFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentWorkoutBinding.inflate(inflater, container, false);
+        binding.toolbar.inflateMenu(R.menu.workout_list_options_menu);
+        binding.toolbar.setOnMenuItemClickListener(menuItem -> {
+            switch (menuItem.getItemId()){
+            case R.id.workout_menu_item_sort:
+                return true;
+            }
+            return false;
+        });
 
         WorkoutAdapter workoutAdapter = new WorkoutAdapter();
         workoutViewModel.getWorkoutList().observe(
