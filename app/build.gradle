@@ -73,4 +73,6 @@ dependencies {
 
     implementation 'androidx.fragment:fragment:1.4.1'
 
+    implementation "com.leinardi.android:speed-dial:3.3.0"
+
 }
