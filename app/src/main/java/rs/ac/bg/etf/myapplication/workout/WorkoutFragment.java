@@ -67,9 +67,15 @@ public class WorkoutFragment extends Fragment {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(mainActivity));
 
         binding.floatingActionButton.inflate(R.menu.workout_list_fab_menu);
-        binding.floatingActionButton.setOnClickListener(view -> {
-            NavDirections action = WorkoutFragmentDirections.actionWorkoutCreate();
-            navController.navigate(action);
+        binding.floatingActionButton.setOnActionSelectedListener(actionItem ->{
+            switch (actionItem.getId()){
+                case R.id.workout_fab_create:
+                    navController.navigate(WorkoutFragmentDirections.actionWorkoutCreate());
+                    return false;
+                case R.id.workout_fab_start :
+                    return false;
+            }
+            return true;
         });
 
 
