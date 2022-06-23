@@ -45,5 +45,7 @@
 
     <string name="workout_create_error_empty">Empty field</string>
     <string name="workout_options_menu_sort_label">"Sort"</string>
+    <string name="start">Create</string>
+    <string name="start_text">Start</string>
 
 </resources>

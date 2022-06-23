@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/workout_fab_create"
+        android:title="@string/start"
+        android:icon="@drawable/ic_baseline_create_24"
+        />
+
+    <item
+        android:id="@+id/workout_fab_start"
+        android:title="@string/start_text"
+        android:icon="@drawable/ic_baseline_not_started_24"
+        />
+
+</menu>
