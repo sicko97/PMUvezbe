@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -60,11 +61,17 @@ public class WorkoutStartFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentWorkoutStartBinding.inflate(inflater, container, false);
         timer = new Timer();
-        if(sharedPreferences.contains(START_TIMESTAMP_KEY)){
-            startWorkout(sharedPreferences.getLong(START_TIMESTAMP_KEY,new Date().getTime()));
+        if (sharedPreferences.contains(START_TIMESTAMP_KEY)) {
+            startWorkout(sharedPreferences.getLong(START_TIMESTAMP_KEY, new Date().getTime()));
         }
         binding.start.setOnClickListener(view -> {
             startWorkout(new Date().getTime());
+        });
+        mainActivity.getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                stopWorkout();
+            }
         });
         return binding.getRoot();
     }
@@ -87,7 +94,7 @@ public class WorkoutStartFragment extends Fragment {
         binding.cancel.setEnabled(true);
         binding.power.setEnabled(true);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putLong(START_TIMESTAMP_KEY,startTimeStamp);
+        editor.putLong(START_TIMESTAMP_KEY, startTimeStamp);
         editor.commit();
         Handler handler = new Handler(Looper.getMainLooper());
         timer.schedule(new TimerTask() {
@@ -106,6 +113,11 @@ public class WorkoutStartFragment extends Fragment {
                 handler.post(() -> binding.workoutDuration.setText(workoutDuration));
             }
         }, 0, 10);
+    }
+
+    private void stopWorkout() {
+        sharedPreferences.edit().remove(START_TIMESTAMP_KEY).commit();
+        navController.navigateUp();
     }
 
 }

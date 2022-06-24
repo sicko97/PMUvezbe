@@ -47,4 +47,5 @@ public class MainActivity extends AppCompatActivity {
                 R.id.nav_host_container);
 
     }
+
 }
