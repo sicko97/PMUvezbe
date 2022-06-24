@@ -14,6 +14,7 @@ import androidx.navigation.Navigation;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import java.util.TimerTask;
 import dagger.hilt.android.AndroidEntryPoint;
 import rs.ac.bg.etf.myapplication.MainActivity;
 import rs.ac.bg.etf.myapplication.R;
+import rs.ac.bg.etf.myapplication.data.Workout;
 import rs.ac.bg.etf.myapplication.databinding.FragmentWorkoutStartBinding;
 
 @AndroidEntryPoint
@@ -69,6 +71,9 @@ public class WorkoutStartFragment extends Fragment {
         });
         binding.cancel.setOnClickListener(view ->{
             cancelWorkout();
+        });
+        binding.finish.setOnClickListener(view ->{
+            finishWorkout();
         });
         mainActivity.getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
             @Override
@@ -122,6 +127,19 @@ public class WorkoutStartFragment extends Fragment {
         stopWorkout();
     }
 
+    private void finishWorkout(){
+        long startTimestamp = sharedPreferences.getLong(START_TIMESTAMP_KEY,new Date().getTime());
+        long elapsed = new Date().getTime() - startTimestamp;
+        double minutes = elapsed / (1000.0 *60);
+        workoutViewModel.insertWorkout(new Workout(
+                0,
+                new Date(),
+                "Dobar trening",
+                0.2 * minutes,
+                minutes
+        ));
+        stopWorkout();
+    }
 
     private void stopWorkout() {
         sharedPreferences.edit().remove(START_TIMESTAMP_KEY).commit();
