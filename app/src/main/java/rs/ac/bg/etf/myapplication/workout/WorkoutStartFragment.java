@@ -67,6 +67,9 @@ public class WorkoutStartFragment extends Fragment {
         binding.start.setOnClickListener(view -> {
             startWorkout(new Date().getTime());
         });
+        binding.cancel.setOnClickListener(view ->{
+            cancelWorkout();
+        });
         mainActivity.getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
@@ -114,6 +117,11 @@ public class WorkoutStartFragment extends Fragment {
             }
         }, 0, 10);
     }
+
+    private void cancelWorkout(){
+        stopWorkout();
+    }
+
 
     private void stopWorkout() {
         sharedPreferences.edit().remove(START_TIMESTAMP_KEY).commit();
