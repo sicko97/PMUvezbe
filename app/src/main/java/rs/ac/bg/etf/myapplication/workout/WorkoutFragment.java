@@ -73,6 +73,7 @@ public class WorkoutFragment extends Fragment {
                     navController.navigate(WorkoutFragmentDirections.actionWorkoutCreate());
                     return false;
                 case R.id.workout_fab_start :
+                    navController.navigate(WorkoutFragmentDirections.actionWorkoutStart());
                     return false;
             }
             return true;

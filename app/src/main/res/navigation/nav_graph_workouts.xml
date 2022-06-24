@@ -14,10 +14,17 @@
         <action
             android:id="@+id/action_workout_create"
             app:destination="@id/workout_create" />
+        <action
+            android:id="@+id/action_workout_start"
+            app:destination="@id/workout_start" />
     </fragment>
     <fragment
         android:id="@+id/workout_create"
         android:name="rs.ac.bg.etf.myapplication.workout.WorkoutCreateFragment"
         android:label="fragment_workout_create"
         tools:layout="@layout/fragment_workout_create" />
+    <fragment
+        android:id="@+id/workout_start"
+        android:name="rs.ac.bg.etf.myapplication.workout.WorkoutStartFragment"
+        android:label="WorkoutStartFragment" />
 </navigation>
